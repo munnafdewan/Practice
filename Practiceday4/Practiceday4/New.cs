@@ -21,8 +21,22 @@ namespace Practiceday4
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            try {
+                if(String.IsNullOrEmpty(ageTextBox.Text))
+                {
+                    MessageBox.Show("Please Enter Age :");
+                    return;
+                }
+                else
+                    ages.Add(Convert.ToInt32(ageTextBox.Text));
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
             names.Add(nameTextBox.Text);
-            ages.Add(Convert.ToInt32(ageTextBox.Text));
+           
             ShowCustomer();
             MessageBox.Show("Add");
         }
